@@ -1,0 +1,13 @@
+.formSection > .formRow {
+  margin-bottom: 16px;
+}
+
+.formRow {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}

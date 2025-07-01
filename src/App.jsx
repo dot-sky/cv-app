@@ -3,6 +3,7 @@ import "./styles/Form.css";
 import "./App.css";
 
 let EDUCATION_ID = 0;
+let WORK_ID = 0;
 
 function Field({
   name,
@@ -58,6 +59,8 @@ function Form({
   setPerson,
   educationItems,
   setEducationItems,
+  workItems,
+  setWorkItems,
   handleEdit,
 }) {
   function updatePersonField(e, field) {
@@ -92,6 +95,31 @@ function Form({
     );
   }
 
+  function updateWorkItemField(event, id, field) {
+    setWorkItems(
+      workItems.map((item) => {
+        const newItem = { ...item };
+        if (newItem.id === id) {
+          newItem[field] = event.target.value;
+        }
+        return newItem;
+      })
+    );
+  }
+
+  function deleteWorkItem(event, id) {
+    event.preventDefault();
+    setWorkItems(workItems.filter((item) => item.id !== id));
+  }
+
+  function addWorkItem(event) {
+    event.preventDefault();
+    WORK_ID += 1;
+
+    setWorkItems((prev) => {
+      return [...prev, { id: WORK_ID }];
+    });
+  }
   return (
     <form>
       <Section name="Personal Information">
@@ -130,9 +158,6 @@ function Form({
       </Section>
       <Section name="Education">
         {educationItems.map((item) => {
-          const itemTitleId = buildFieldId("title", item.id);
-          const itemDateId = buildFieldId("date", item.id);
-          const itemSchoolId = buildFieldId("school", item.id);
           return (
             <Fragment key={item.id}>
               <button onClick={(event) => deleteEducationItem(event, item.id)}>
@@ -141,7 +166,7 @@ function Form({
               <Row columns={2}>
                 <Field
                   name="Title"
-                  id={itemTitleId}
+                  id={buildFieldId("title", item.id)}
                   required={true}
                   onChangeHandler={(event) =>
                     updateEducationItemField(event, item.id, "title")
@@ -162,7 +187,7 @@ function Form({
               <Row columns={1}>
                 <Field
                   name="School"
-                  id={itemSchoolId}
+                  id={buildFieldId("school", item.id)}
                   required={true}
                   onChangeHandler={(event) =>
                     updateEducationItemField(event, item.id, "school")
@@ -176,28 +201,75 @@ function Form({
         <button onClick={addEducationItem}>Add</button>
       </Section>
       <Section name="Work">
-        <Row columns={2}>
-          <Field name="Company" id="company" required={true} />
-          <Field name="Position title" id="positionTitle" required={true} />
-        </Row>
-        <Row columns={2}>
-          <Field name="From" id="fromDate" type="date" required={true} />
-          <Field name="Until" id="untilDate" type="date" />
-        </Row>
-        <Row columns={1}>
-          <Field
-            name="Main responsibilities"
-            id="responsibilities"
-            required={true}
-          />
-        </Row>
+        {workItems.map((item) => {
+          return (
+            <Fragment key={item.id}>
+              <button onClick={(event) => deleteWorkItem(event, item.id)}>
+                Delete
+              </button>
+              <Row columns={2}>
+                <Field
+                  name="Company"
+                  id={buildFieldId("company", item.id)}
+                  onChangeHandler={(event) =>
+                    updateWorkItemField(event, item.id, "company")
+                  }
+                  value={item.company}
+                  required={true}
+                />
+                <Field
+                  name="Position title"
+                  id={buildFieldId("position", item.id)}
+                  onChangeHandler={(event) =>
+                    updateWorkItemField(event, item.id, "position")
+                  }
+                  value={item.position}
+                  required={true}
+                />
+              </Row>
+              <Row columns={2}>
+                <Field
+                  name="From"
+                  id={buildFieldId("fromDate", item.id)}
+                  type="date"
+                  onChangeHandler={(event) =>
+                    updateWorkItemField(event, item.id, "fromDate")
+                  }
+                  value={item.fromDate}
+                  required={true}
+                />
+                <Field
+                  name="Until"
+                  id={buildFieldId("untilDate", item.id)}
+                  onChangeHandler={(event) =>
+                    updateWorkItemField(event, item.id, "untilDate")
+                  }
+                  value={item.untilDate}
+                  type="date"
+                />
+              </Row>
+              <Row columns={1}>
+                <Field
+                  name="Main responsibilities"
+                  id={buildFieldId("resp", item.id)}
+                  onChangeHandler={(event) =>
+                    updateWorkItemField(event, item.id, "resp")
+                  }
+                  value={item.resp}
+                  required={true}
+                />
+              </Row>
+            </Fragment>
+          );
+        })}
+        <button onClick={addWorkItem}>Add</button>
       </Section>
       <input type="submit" value="Build CV" onClick={handleEdit} />
     </form>
   );
 }
 
-function CV({ person, handleEdit, educationItems }) {
+function CV({ person, handleEdit, educationItems, workItems }) {
   return (
     <>
       <h2>{person.firstName + " " + person.lastName}</h2>
@@ -210,6 +282,18 @@ function CV({ person, handleEdit, educationItems }) {
           <p key={item.id}>
             {item.title} - {item.school} - {item.date}
           </p>
+        );
+      })}
+      <h2>Work</h2>
+      {workItems.map((item) => {
+        return (
+          <Fragment key={item.id}>
+            <p>
+              {item.company} - {item.position} - from: {item.fromDate} to:{" "}
+              {item.untilDate}
+            </p>
+            <p>{item.resp}</p>
+          </Fragment>
         );
       })}
       <button onClick={handleEdit}>Edit</button>
@@ -227,7 +311,9 @@ function App() {
   const [educationItems, setEducationItems] = useState([
     { id: 0, title: "", school: "", date: "" },
   ]);
-  const [workItems, setWorkItems] = useState([]);
+  const [workItems, setWorkItems] = useState([
+    { id: 0, company: "", position: "", fromDate: "", untilDate: "", resp: "" },
+  ]);
 
   const [edit, setEdit] = useState(true);
 
@@ -245,12 +331,15 @@ function App() {
           setPerson={setPerson}
           educationItems={educationItems}
           setEducationItems={setEducationItems}
+          workItems={workItems}
+          setWorkItems={setWorkItems}
           handleEdit={handleEdit}
         />
       ) : (
         <CV
           person={person}
           educationItems={educationItems}
+          workItems={workItems}
           handleEdit={handleEdit}
         />
       )}

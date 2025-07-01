@@ -22,8 +22,8 @@ function Field({
         type={type}
         id={id}
         name={id}
-        onChange={onChangeHandler}
         value={value}
+        onChange={onChangeHandler}
       />
     </div>
   );
@@ -49,6 +49,10 @@ function Section({ name, children }) {
   );
 }
 
+function buildFieldId(fieldName, id) {
+  return fieldName + "-" + id;
+}
+
 function Form({
   person,
   setPerson,
@@ -69,6 +73,23 @@ function Form({
     setEducationItems((prev) => {
       return [...prev, { id: EDUCATION_ID }];
     });
+  }
+
+  function deleteEducationItem(event, id) {
+    event.preventDefault();
+    setEducationItems(educationItems.filter((item) => item.id !== id));
+  }
+
+  function updateEducationItemField(event, id, field) {
+    setEducationItems(
+      educationItems.map((item) => {
+        const newItem = { ...item };
+        if (newItem.id === id) {
+          newItem[field] = event.target.value;
+        }
+        return newItem;
+      })
+    );
   }
 
   return (
@@ -109,19 +130,45 @@ function Form({
       </Section>
       <Section name="Education">
         {educationItems.map((item) => {
+          const itemTitleId = buildFieldId("title", item.id);
+          const itemDateId = buildFieldId("date", item.id);
+          const itemSchoolId = buildFieldId("school", item.id);
           return (
             <Fragment key={item.id}>
+              <button onClick={(event) => deleteEducationItem(event, item.id)}>
+                Delete
+              </button>
               <Row columns={2}>
-                <Field name="Title" id={"title-" + item.id} required={true} />
+                <Field
+                  name="Title"
+                  id={itemTitleId}
+                  required={true}
+                  onChangeHandler={(event) =>
+                    updateEducationItemField(event, item.id, "title")
+                  }
+                  value={item.title}
+                />
                 <Field
                   name="Date"
-                  id={"dateStart-" + item.id}
+                  id={buildFieldId("date", item.id)}
                   type="date"
                   required={true}
+                  onChangeHandler={(event) =>
+                    updateEducationItemField(event, item.id, "date")
+                  }
+                  value={item.date}
                 />
               </Row>
               <Row columns={1}>
-                <Field name="School" id="school" required={true} />
+                <Field
+                  name="School"
+                  id={itemSchoolId}
+                  required={true}
+                  onChangeHandler={(event) =>
+                    updateEducationItemField(event, item.id, "school")
+                  }
+                  value={item.school}
+                />
               </Row>
             </Fragment>
           );
@@ -150,21 +197,36 @@ function Form({
   );
 }
 
-function CV({ person, handleEdit }) {
+function CV({ person, handleEdit, educationItems }) {
   return (
     <>
       <h2>{person.firstName + " " + person.lastName}</h2>
       <p>
         {person.email} {person.phone}
       </p>
+      <h2>Education</h2>
+      {educationItems.map((item) => {
+        return (
+          <p key={item.id}>
+            {item.title} - {item.school} - {item.date}
+          </p>
+        );
+      })}
       <button onClick={handleEdit}>Edit</button>
     </>
   );
 }
 
 function App() {
-  const [person, setPerson] = useState({});
-  const [educationItems, setEducationItems] = useState([{ id: 0 }]);
+  const [person, setPerson] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+  });
+  const [educationItems, setEducationItems] = useState([
+    { id: 0, title: "", school: "", date: "" },
+  ]);
   const [workItems, setWorkItems] = useState([]);
 
   const [edit, setEdit] = useState(true);
@@ -186,7 +248,11 @@ function App() {
           handleEdit={handleEdit}
         />
       ) : (
-        <CV person={person} handleEdit={handleEdit} />
+        <CV
+          person={person}
+          educationItems={educationItems}
+          handleEdit={handleEdit}
+        />
       )}
     </>
   );

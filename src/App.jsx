@@ -25,6 +25,7 @@ function Field({
         name={id}
         value={value}
         onChange={onChangeHandler}
+        required={required}
       />
     </div>
   );
@@ -61,7 +62,7 @@ function Form({
   setEducationItems,
   workItems,
   setWorkItems,
-  handleEdit,
+  handleBuild,
 }) {
   function updatePersonField(e, field) {
     setPerson((prev) => {
@@ -120,8 +121,9 @@ function Form({
       return [...prev, { id: WORK_ID }];
     });
   }
+
   return (
-    <form>
+    <form onSubmit={handleBuild}>
       <Section name="Personal Information">
         <Row columns={2}>
           <Field
@@ -143,6 +145,7 @@ function Form({
           <Field
             name="Email"
             id="email"
+            type="email"
             required={true}
             onChangeHandler={(event) => updatePersonField(event, "email")}
             value={person.email}
@@ -264,7 +267,7 @@ function Form({
         })}
         <button onClick={addWorkItem}>Add</button>
       </Section>
-      <input type="submit" value="Build CV" onClick={handleEdit} />
+      <input type="submit" value="Build CV" />
     </form>
   );
 }
@@ -317,11 +320,17 @@ function App() {
 
   const [edit, setEdit] = useState(true);
 
-  function handleEdit(e) {
+  function handleBuild(e) {
     e.preventDefault();
-    setEdit((prev) => !prev);
+    e.target.reportValidity();
+    if (e.target.checkValidity()) {
+      setEdit((prev) => !prev);
+    }
   }
 
+  function handleEdit(e) {
+    setEdit((prev) => !prev);
+  }
   return (
     <>
       <h1>CV Builder</h1>
@@ -333,7 +342,7 @@ function App() {
           setEducationItems={setEducationItems}
           workItems={workItems}
           setWorkItems={setWorkItems}
-          handleEdit={handleEdit}
+          handleBuild={handleBuild}
         />
       ) : (
         <CV

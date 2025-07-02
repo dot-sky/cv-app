@@ -3,3 +3,6 @@
   margin: 0 auto;
   padding: 2rem;
 }
+input:user-invalid {
+  border: solid red 1px;
+}

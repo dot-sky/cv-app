@@ -131,8 +131,9 @@ small {
 .field input {
   border: 1px solid var(--bg-400);
   border-radius: var(--space-hx);
-
   padding: var(--space-1x) 12px;
+  height: 20px;
+
   font-family: inherit;
   font-size: 1rem;
 }
@@ -233,4 +234,10 @@ form > .form-section:not(:last-child) {
 .entry-btn {
   display: flex;
   justify-content: flex-end;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  font-size: 1.4rem;
 }

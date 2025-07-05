@@ -1,0 +1,9 @@
+form > .form-section:not(:last-child) {
+  margin-bottom: var(--space-3x);
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  font-size: 1.4rem;
+}

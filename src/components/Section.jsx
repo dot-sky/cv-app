@@ -1,3 +1,4 @@
+import "../styles/Section.css";
 function Section({ name, children }) {
   return (
     <fieldset className="form-section">

@@ -1,0 +1,26 @@
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  margin-bottom: var(--space-1x);
+}
+.field input {
+  border: 1px solid var(--bg-400);
+  border-radius: var(--space-hx);
+  padding: var(--space-1x) 12px;
+  height: 20px;
+
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.field input:user-invalid {
+  border: solid var(--accent-500) 1px;
+}
+
+.field input:focus-visible {
+  outline: solid var(--bg-800) 2px;
+  outline-offset: -2px;
+}

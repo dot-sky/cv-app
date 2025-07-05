@@ -45,7 +45,7 @@ function Row({ columns = 1, children }) {
 function Section({ name, children }) {
   return (
     <fieldset className="formSection">
-      <legend>{name}</legend>
+      <h5>{name}</h5>
       {children}
     </fieldset>
   );

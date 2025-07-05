@@ -1,8 +1,178 @@
-#root {
-  max-width: 1280px;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
+
+  --text: #0a080e;
+  --bg: #ffffff;
+  --primary: #764fd3;
+  --secondary: #ffafea;
+  --accent: #f98eb4;
+
+  --text-50: #f1eff6;
+  --text-100: #e3dfec;
+  --text-200: #c7beda;
+  --text-300: #ac9ec7;
+  --text-400: #907db5;
+  --text-500: #745da2;
+  --text-600: #5d4a82;
+  --text-700: #463861;
+  --text-800: #2e2541;
+  --text-900: #171320;
+  --text-950: #0c0910;
+
+  --bg-50: #f6f6f6;
+  --bg-100: #e6e6e6;
+  --bg-200: #cccccc;
+  --bg-300: #b3b3b3;
+  --bg-400: #999999;
+  --bg-500: #808080;
+  --bg-600: #666666;
+  --bg-700: #4d4d4d;
+  --bg-800: #333333;
+  --bg-900: #1a1a1a;
+  --bg-950: #0d0d0d;
+
+  --primary-50: #efebfa;
+  --primary-100: #dfd6f5;
+  --primary-200: #c0adeb;
+  --primary-300: #a085e0;
+  --primary-400: #815cd6;
+  --primary-500: #6133cc;
+  --primary-600: #4e29a3;
+  --primary-700: #3a1f7a;
+  --primary-800: #271452;
+  --primary-900: #130a29;
+  --primary-950: #0a0514;
+
+  --secondary-50: #ffe5f8;
+  --secondary-100: #ffccf1;
+  --secondary-200: #ff99e4;
+  --secondary-300: #ff66d6;
+  --secondary-400: #ff33c9;
+  --secondary-500: #ff00bb;
+  --secondary-600: #cc0096;
+  --secondary-700: #990070;
+  --secondary-800: #66004b;
+  --secondary-900: #330025;
+  --secondary-950: #1a0013;
+
+  --accent-50: #fee7ef;
+  --accent-100: #fccfdf;
+  --accent-200: #fa9ebe;
+  --accent-300: #f76e9e;
+  --accent-400: #f53d7d;
+  --accent-500: #f20d5d;
+  --accent-600: #c20a4a;
+  --accent-700: #910838;
+  --accent-800: #610525;
+  --accent-900: #300313;
+  --accent-950: #180109;
+
+  --space-hx: 4px;
+  --space-1x: 8px;
+  --space-2x: 16px;
+  --space-3x: 24px;
+  --space-4x: 32px;
+  --space-5x: 40px;
 }
-input:user-invalid {
-  border: solid red 1px;
+
+body {
+  font-family: "Lato";
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--bg-50);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+html {
+  font-size: 100%;
+} /* 16px */
+
+h1 {
+  font-size: 3.053rem; /* 48.8px */
+}
+
+h2 {
+  font-size: 2.442rem; /* 39.04px */
+}
+
+h3 {
+  font-size: 1.954rem; /* 31.2px */
+}
+
+h4 {
+  font-size: 1.563rem; /* 24.96px */
+}
+
+h5 {
+  font-size: 1.25rem; /* 20px */
+}
+
+small {
+  font-size: 0.8rem; /* 12.8px */
+}
+
+.field label {
+  margin-bottom: var(--space-1x);
+}
+.field input {
+  border: 1px solid var(--bg-400);
+  border-radius: var(--space-hx);
+
+  padding: var(--space-1x) 12px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.field input:user-invalid {
+  border: solid var(--accent-500) 1px;
+}
+
+.field input:focus-visible {
+  outline: solid var(--bg-800) 2px;
+  outline-offset: -2px;
+}
+
+/* Form */
+form > .formSection:not(:last-child) {
+  margin-bottom: var(--space-3x);
+}
+
+/* Form Section*/
+
+.formSection {
+  border: 0px;
+  border-radius: var(--space-2x);
+  margin: 0;
+  padding: var(--space-4x);
+  background-color: var(--bg);
+}
+
+.formSection h5 {
+  margin-top: 0;
+}
+
+.formSection > * {
+  margin-bottom: 16px;
+}
+
+.formRow {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
 }

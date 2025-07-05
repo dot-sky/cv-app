@@ -40,6 +40,7 @@
   --primary-200: #c0adeb;
   --primary-300: #a085e0;
   --primary-400: #815cd6;
+  --primary-450: #714bc9;
   --primary-500: #6133cc;
   --primary-600: #4e29a3;
   --primary-700: #3a1f7a;
@@ -64,6 +65,7 @@
   --accent-200: #fa9ebe;
   --accent-300: #f76e9e;
   --accent-400: #f53d7d;
+  --accent-450: #ef2a6f;
   --accent-500: #f20d5d;
   --accent-600: #c20a4a;
   --accent-700: #910838;
@@ -145,13 +147,13 @@ small {
 }
 
 /* Form */
-form > .formSection:not(:last-child) {
+form > .form-section:not(:last-child) {
   margin-bottom: var(--space-3x);
 }
 
 /* Form Section*/
 
-.formSection {
+.form-section {
   border: 0px;
   border-radius: var(--space-2x);
   margin: 0;
@@ -159,20 +161,76 @@ form > .formSection:not(:last-child) {
   background-color: var(--bg);
 }
 
-.formSection h5 {
+.form-section > h4 {
   margin-top: 0;
 }
 
-.formSection > * {
-  margin-bottom: 16px;
+.form-section .form-row,
+.form-section > h4 {
+  margin-bottom: var(--space-2x);
 }
 
-.formRow {
+.form-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1x);
+  margin-bottom: var(--space-2x);
+}
+
+.entry + .entry {
+  margin-top: var(--space-3x);
+  padding-top: var(--space-3x);
+  border-top: 3px dashed var(--bg-100);
+}
+
+.entry-title {
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.form-row {
   display: grid;
-  gap: 16px;
+  gap: var(--space-2x);
 }
 
 .field {
   display: flex;
   flex-direction: column;
+}
+
+/* Buttons */
+.btn {
+  font-size: 1rem;
+  background-color: white;
+  border: 1px solid var(--text);
+  border-radius: var(--space-hx);
+  padding: var(--space-1x) var(--space-2x);
+  cursor: pointer;
+}
+
+.btn-danger {
+  background-color: var(--accent-400);
+  border: 1px solid var(--accent-400);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: var(--accent-450);
+  border: 1px solid var(--accent-450);
+}
+
+.btn-primary {
+  background-color: var(--primary-400);
+  border: 1px solid var(--primary-400);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--primary-450);
+  border: 1px solid var(--primary-450);
+}
+
+.entry-btn {
+  display: flex;
+  justify-content: flex-end;
 }

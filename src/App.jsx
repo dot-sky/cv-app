@@ -34,7 +34,7 @@ function Field({
 function Row({ columns = 1, children }) {
   return (
     <div
-      className="formRow"
+      className="form-row"
       style={{ gridTemplateColumns: "1fr ".repeat(columns) }}
     >
       {children}
@@ -44,8 +44,8 @@ function Row({ columns = 1, children }) {
 
 function Section({ name, children }) {
   return (
-    <fieldset className="formSection">
-      <h5>{name}</h5>
+    <fieldset className="form-section">
+      <h4>{name}</h4>
       {children}
     </fieldset>
   );
@@ -160,12 +160,20 @@ function Form({
         </Row>
       </Section>
       <Section name="Education">
-        {educationItems.map((item) => {
+        {educationItems.map((item, i) => {
           return (
-            <Fragment key={item.id}>
-              <button onClick={(event) => deleteEducationItem(event, item.id)}>
-                Delete
-              </button>
+            <div key={item.id} class="entry">
+              <div className="form-section-title">
+                <span class="entry-title">
+                  Details {educationItems.length > 1 && i + 1}
+                </span>
+                <button
+                  className="btn btn-danger"
+                  onClick={(event) => deleteEducationItem(event, item.id)}
+                >
+                  Delete
+                </button>
+              </div>
               <Row columns={2}>
                 <Field
                   name="Title"
@@ -198,10 +206,14 @@ function Form({
                   value={item.school}
                 />
               </Row>
-            </Fragment>
+            </div>
           );
         })}
-        <button onClick={addEducationItem}>Add</button>
+        <div className="entry-btn">
+          <button className="btn btn-primary" onClick={addEducationItem}>
+            Add
+          </button>
+        </div>
       </Section>
       <Section name="Work">
         {workItems.map((item) => {

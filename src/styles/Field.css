@@ -22,11 +22,17 @@ textarea {
   min-height: 1lh;
 }
 
-.field input:user-invalid {
+.field input:user-invalid,
+.field textarea:user-invalid {
   border: solid var(--accent-500) 1px;
 }
 
-.field input:focus-visible {
-  outline: solid var(--bg-800) 2px;
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: solid var(--bg-500) 2px;
   outline-offset: -2px;
+}
+
+.required-symbol {
+  color: var(--accent-500);
 }

@@ -12,7 +12,7 @@ function Field({
     <div className="field">
       <label htmlFor={id}>
         {name}
-        {required && "*"}
+        {required && <span className="required-symbol"> *</span>}
       </label>
 
       <Tag

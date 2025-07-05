@@ -6,6 +6,7 @@ function Field({
   required = false,
   type = "text",
   onChangeHandler,
+  Tag = "input",
 }) {
   return (
     <div className="field">
@@ -13,7 +14,8 @@ function Field({
         {name}
         {required && "*"}
       </label>
-      <input
+
+      <Tag
         type={type}
         id={id}
         name={id}

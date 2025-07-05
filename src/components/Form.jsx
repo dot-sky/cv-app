@@ -235,6 +235,7 @@ function buildWorkSection(workItems, setWorkItems) {
                 }
                 value={item.resp}
                 required={true}
+                Tag="textarea"
               />
             </Row>
           </div>
@@ -264,7 +265,7 @@ function Form({
       {buildEducationSection(educationItems, setEducationItems)}
       {buildWorkSection(workItems, setWorkItems)}
       <input
-        class="btn btn-primary btn-submit"
+        className="btn btn-primary btn-submit"
         type="submit"
         value="Build CV"
       />

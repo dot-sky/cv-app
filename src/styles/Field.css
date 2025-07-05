@@ -6,7 +6,8 @@
 .field label {
   margin-bottom: var(--space-1x);
 }
-.field input {
+.field input,
+textarea {
   border: 1px solid var(--bg-400);
   border-radius: var(--space-hx);
   padding: var(--space-1x) 12px;
@@ -14,6 +15,11 @@
 
   font-family: inherit;
   font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 1lh;
 }
 
 .field input:user-invalid {

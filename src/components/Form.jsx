@@ -234,7 +234,6 @@ function buildWorkSection(workItems, setWorkItems) {
                   updateWorkItemField(event, item.id, "resp")
                 }
                 value={item.resp}
-                required={true}
                 Tag="textarea"
               />
             </Row>

@@ -16,6 +16,7 @@ form > .form-section:not(:last-child) {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--primary-600);
 }
 
 .edit-title > img {

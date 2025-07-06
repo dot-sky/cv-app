@@ -78,7 +78,7 @@ function App() {
   const [educationItems, setEducationItems] = useState(empty.educationItems);
   const [workItems, setWorkItems] = useState(empty.workItems);
 
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(true);
 
   function handleBuild(e) {
     let form = e.target;

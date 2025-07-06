@@ -85,7 +85,7 @@ function CV({ person, handleEdit, educationItems, workItems }) {
           );
         })}
       </div>
-      <button class="btn btn-primary btn-submit" onClick={handleEdit}>
+      <button className="btn btn-primary btn-submit" onClick={handleEdit}>
         Edit
       </button>
     </>

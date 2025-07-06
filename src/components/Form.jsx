@@ -2,7 +2,7 @@ import "../styles/Form.css";
 import { Field } from "./Field";
 import { Row } from "./Row";
 import { Section } from "./Section";
-
+import Logo from "../assets/magic-wand.svg";
 let EDUCATION_ID = 0;
 let WORK_ID = 0;
 
@@ -263,18 +263,43 @@ function Form({
   workItems,
   setWorkItems,
   handleBuild,
+  clearValues,
+  setDefaultValues,
 }) {
   return (
-    <form onSubmit={handleBuild}>
-      {buildPersonalSection(person, setPerson)}
-      {buildEducationSection(educationItems, setEducationItems)}
-      {buildWorkSection(workItems, setWorkItems)}
-      <input
-        className="btn btn-primary btn-submit"
-        type="submit"
-        value="Build CV"
-      />
-    </form>
+    <>
+      <div className="header">
+        <h1 className="edit-title">
+          <img src={Logo} alt="" />
+          BuildMyCV
+        </h1>
+        <div className="controls">
+          <button className="btn btn-danger" onClick={clearValues}>
+            Clear
+          </button>
+          <button className="btn btn-primary" onClick={setDefaultValues}>
+            Default data
+          </button>
+          <input
+            type="submit"
+            form="cv-form"
+            className="btn btn-primary"
+            onClick={(event) => handleBuild(event)}
+            value="Build CV"
+          />
+        </div>
+      </div>
+      <form id="cv-form" onSubmit={handleBuild}>
+        {buildPersonalSection(person, setPerson)}
+        {buildEducationSection(educationItems, setEducationItems)}
+        {buildWorkSection(workItems, setWorkItems)}
+        <input
+          className="btn btn-primary btn-submit"
+          type="submit"
+          value="Build CV"
+        />
+      </form>
+    </>
   );
 }
 

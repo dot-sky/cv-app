@@ -7,3 +7,24 @@ form > .form-section:not(:last-child) {
   width: 100%;
   font-size: 1.4rem;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.edit-title {
+  margin: var(--space-2x) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-title > img {
+  height: 0.7lh;
+  margin-right: var(--space-2x);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2x);
+}

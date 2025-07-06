@@ -2,6 +2,7 @@
   background-color: white;
   padding: var(--space-4x);
   border-radius: var(--space-1x);
+  margin-bottom: var(--space-3x);
 }
 
 .cv-wrapper > h1 {

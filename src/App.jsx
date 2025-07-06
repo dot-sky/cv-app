@@ -17,13 +17,13 @@ function App() {
     {
       id: 0,
       title: "Bachelor of Science in Computer Science",
-      school: "University of Example",
+      school: "University of Boston",
       date: "2022-06-15",
     },
     {
       id: 1,
       title: "Master of Business Administration",
-      school: "Example Business School",
+      school: "Boston Business School",
       date: "2024-06-15",
     },
   ]);

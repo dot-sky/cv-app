@@ -2,51 +2,49 @@ import { useState, Fragment } from "react";
 import "./styles/Form.css";
 import "./App.css";
 import { Form } from "./components/Form";
-
-function CV({ person, handleEdit, educationItems, workItems }) {
-  return (
-    <>
-      <h2>{person.firstName + " " + person.lastName}</h2>
-      <p>
-        {person.email} {person.phone}
-      </p>
-      <h2>Education</h2>
-      {educationItems.map((item) => {
-        return (
-          <p key={item.id}>
-            {item.title} - {item.school} - {item.date}
-          </p>
-        );
-      })}
-      <h2>Work</h2>
-      {workItems.map((item) => {
-        return (
-          <Fragment key={item.id}>
-            <p>
-              {item.company} - {item.position} - from: {item.fromDate} to:{" "}
-              {item.untilDate}
-            </p>
-            <p>{item.resp}</p>
-          </Fragment>
-        );
-      })}
-      <button onClick={handleEdit}>Edit</button>
-    </>
-  );
-}
+import { CV } from "./components/CV";
 
 function App() {
   const [person, setPerson] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
+    firstName: "Alex",
+    lastName: "Johnson",
+    phone: "+1 (555) 123‑4567",
+    email: "alex.johnson@example.com",
+    site: "www.alexjohnson.com",
   });
+
   const [educationItems, setEducationItems] = useState([
-    { id: 0, title: "", school: "", date: "" },
+    {
+      id: 0,
+      title: "Bachelor of Science in Computer Science",
+      school: "University of Example",
+      date: "2022-06-15",
+    },
+    {
+      id: 1,
+      title: "Master of Business Administration",
+      school: "Example Business School",
+      date: "2024-06-15",
+    },
   ]);
+
   const [workItems, setWorkItems] = useState([
-    { id: 0, company: "", position: "", fromDate: "", untilDate: "", resp: "" },
+    {
+      id: 0,
+      company: "TechNova Solutions",
+      position: "Frontend Developer",
+      fromDate: "2022-07-01",
+      untilDate: "2025-07-01",
+      resp: "Developed and maintained responsive web interfaces using React and Tailwind CSS.",
+    },
+    {
+      id: 1,
+      company: "Webify Labs",
+      position: "Junior Web Developer",
+      fromDate: "2020-08-01",
+      untilDate: "2022-06-30",
+      resp: "Assisted in building web applications and collaborated on UI design improvements.",
+    },
   ]);
 
   const [edit, setEdit] = useState(true);
@@ -63,9 +61,14 @@ function App() {
     setEdit((prev) => !prev);
   }
   return (
-    <>
-      <h1>CV Builder</h1>
-      {edit ? (
+    <div className="main-wrapper">
+      <CV
+        person={person}
+        educationItems={educationItems}
+        workItems={workItems}
+        handleEdit={handleEdit}
+      />
+      {/* {edit ? (
         <Form
           person={person}
           setPerson={setPerson}
@@ -76,14 +79,8 @@ function App() {
           handleBuild={handleBuild}
         />
       ) : (
-        <CV
-          person={person}
-          educationItems={educationItems}
-          workItems={workItems}
-          handleEdit={handleEdit}
-        />
-      )}
-    </>
+      )} */}
+    </div>
   );
 }
 

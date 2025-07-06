@@ -1,12 +1,52 @@
-# React + Vite
+# BuildMyCV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BuildMyCV is a simple web app that helps users create CVs easily. Just fill in your details in the form, and the app automatically generates a CV for you.
 
-Currently, two official plugins are available:
+This project is built using **React** + **Vite** and deployed on **Cloudflare**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+Check out the live app here: [BuildMyCV Live](#)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Installation
+
+To run this project locally:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/dot-sky/cv-app
+   cd cv-app
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the app in development mode:**
+
+   ```bash
+   npm run dev
+   ```
+
+Open http://localhost:5173 to view it in your browser.
+
+## 📦 Build for production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+## ✏️ Features
+
+- Responsive design.
+
+- Instantly see your CV generated on the same page.
+
+## 🙌 Credits
+
+Uicons by [Flaticon](https://www.flaticon.com/uicons)

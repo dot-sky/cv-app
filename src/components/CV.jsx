@@ -1,8 +1,8 @@
-import { Fragment } from "react";
 import "../styles/CV.css";
 import phoneIcon from "../assets/phone-flip.svg";
 import mailIcon from "../assets/envelope.svg";
 import webIcon from "../assets/browser.svg";
+
 function ContactTab({ person, icon, title, field }) {
   return (
     <div className="contact-wrapper">
@@ -26,7 +26,7 @@ function CV({ person, handleEdit, educationItems, workItems }) {
   return (
     <>
       <div className="cv-wrapper">
-        <h1>{person.firstName + " " + person.lastName}</h1>
+        <h1>{person.name}</h1>
         <hr />
         <div className="contact-info">
           <ContactTab

@@ -6,8 +6,7 @@ import { CV } from "./components/CV";
 
 function App() {
   const [person, setPerson] = useState({
-    firstName: "Alex",
-    lastName: "Johnson",
+    name: "Alex Johnson",
     phone: "+1 (555) 123‑4567",
     email: "alex.johnson@example.com",
     site: "www.alexjohnson.com",
@@ -17,7 +16,7 @@ function App() {
     {
       id: 0,
       title: "Bachelor of Science in Computer Science",
-      school: "University of Boston",
+      school: "University of ",
       date: "2022-06-15",
     },
     {
@@ -35,7 +34,7 @@ function App() {
       position: "Frontend Developer",
       fromDate: "2022-07-01",
       untilDate: "2025-07-01",
-      resp: "Developed and maintained responsive web interfaces using React and Tailwind CSS.",
+      resp: "Developed and maintained responsive web interfaces using React and Tailwind CSS. Collaborated closely with backend developers to integrate RESTful APIs, optimized performance for mobile devices.",
     },
     {
       id: 1,
@@ -43,11 +42,11 @@ function App() {
       position: "Junior Web Developer",
       fromDate: "2020-08-01",
       untilDate: "2022-06-30",
-      resp: "Assisted in building web applications and collaborated on UI design improvements.",
+      resp: "Assisted in building and enhancing web applications, implemented UI components with JavaScript and CSS, and collaborated on user interface design improvements. Supported debugging and testing processes to ensure product quality.",
     },
   ]);
 
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   function handleBuild(e) {
     e.preventDefault();
@@ -62,13 +61,7 @@ function App() {
   }
   return (
     <div className="main-wrapper">
-      <CV
-        person={person}
-        educationItems={educationItems}
-        workItems={workItems}
-        handleEdit={handleEdit}
-      />
-      {/* {edit ? (
+      {edit ? (
         <Form
           person={person}
           setPerson={setPerson}
@@ -79,7 +72,13 @@ function App() {
           handleBuild={handleBuild}
         />
       ) : (
-      )} */}
+        <CV
+          person={person}
+          educationItems={educationItems}
+          workItems={workItems}
+          handleEdit={handleEdit}
+        />
+      )}
     </div>
   );
 }

@@ -20,21 +20,12 @@ function buildPersonalSection(person, setPerson) {
     <Section name="Personal Information">
       <Row columns={2}>
         <Field
-          name="First Name"
-          id="firstName"
+          name="Name"
+          id="name"
           required={true}
-          onChangeHandler={(event) => updatePersonField(event, "firstName")}
-          value={person.firstName}
+          onChangeHandler={(event) => updatePersonField(event, "name")}
+          value={person.name}
         />
-        <Field
-          name="Last Name"
-          id="lastName"
-          required={true}
-          onChangeHandler={(event) => updatePersonField(event, "lastName")}
-          value={person.lastName}
-        />
-      </Row>
-      <Row columns={2}>
         <Field
           name="Email"
           id="email"
@@ -43,12 +34,20 @@ function buildPersonalSection(person, setPerson) {
           onChangeHandler={(event) => updatePersonField(event, "email")}
           value={person.email}
         />
+      </Row>
+      <Row columns={2}>
         <Field
           name="Phone"
           id="phone"
           type="tel"
           onChangeHandler={(event) => updatePersonField(event, "phone")}
           value={person.phone}
+        />
+        <Field
+          name="Site"
+          id="site"
+          onChangeHandler={(event) => updatePersonField(event, "site")}
+          value={person.site}
         />
       </Row>
     </Section>

@@ -35,12 +35,14 @@ function CV({ person, handleEdit, educationItems, workItems }) {
             title="Email"
             field="email"
           />
-          <ContactTab
-            person={person}
-            icon={phoneIcon}
-            title="Phone"
-            field="phone"
-          />
+          {person.phone && person.phone !== "" && (
+            <ContactTab
+              person={person}
+              icon={phoneIcon}
+              title="Phone"
+              field="phone"
+            />
+          )}
           {person.site && person.site !== "" && (
             <ContactTab
               person={person}

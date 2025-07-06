@@ -8,9 +8,12 @@ form > .form-section:not(:last-child) {
   font-size: 1.4rem;
 }
 .header {
+  margin: var(--space-3x) var(--space-3x);
+
   display: flex;
+  gap: var(--space-2x);
   justify-content: space-between;
-  margin: var(--space-2x) var(--space-3x);
+  flex-wrap: wrap;
 }
 
 .edit-title {
@@ -30,4 +33,35 @@ form > .form-section:not(:last-child) {
   display: flex;
   align-items: center;
   gap: var(--space-2x);
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    margin: var(--space-3x) 0;
+  }
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  .controls {
+    flex-grow: 1;
+  }
+  .controls > button {
+    width: calc(50% - var(--space-1x));
+  }
+  .controls > input {
+    width: 100%;
+  }
 }

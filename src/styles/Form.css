@@ -10,9 +10,11 @@ form > .form-section:not(:last-child) {
 .header {
   display: flex;
   justify-content: space-between;
+  margin: var(--space-2x) var(--space-3x);
 }
+
 .edit-title {
-  margin: var(--space-2x) 0;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,6 +3,7 @@ import "./styles/Form.css";
 import "./App.css";
 import { Form } from "./components/Form";
 import { CV } from "./components/CV";
+import { Footer } from "./components/Footer";
 
 const empty = {
   person: {
@@ -131,6 +132,7 @@ function App() {
           handleEdit={handleEdit}
         />
       )}
+      <Footer />
     </div>
   );
 }

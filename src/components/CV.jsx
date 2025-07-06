@@ -16,6 +16,12 @@ function ContactTab({ person, icon, title, field }) {
     </div>
   );
 }
+
+function formatDate(date) {
+  const dateValues = date.split("-");
+  return dateValues[1] + "/" + dateValues[0];
+}
+
 function CV({ person, handleEdit, educationItems, workItems }) {
   return (
     <div className="cv-wrapper">
@@ -43,12 +49,21 @@ function CV({ person, handleEdit, educationItems, workItems }) {
           />
         )}
       </div>
-      <h2>Education</h2>
-      {educationItems.map((item) => {
+      <h2>Work Experience</h2>
+      {workItems.map((item) => {
         return (
-          <p key={item.id}>
-            {item.title} - {item.school} - {item.date}
-          </p>
+          <div className="entry-wrapper">
+            <div className="entry-highlight">
+              <div className="entry-date">
+                {formatDate(item.fromDate)} to {formatDate(item.untilDate)}
+              </div>
+              <div className="entry-place">{item.company}</div>
+            </div>
+            <div className="entry-details">
+              <h5 className="entry-title">{item.position}</h5>
+              <p>{item.resp}</p>
+            </div>
+          </div>
         );
       })}
       <h2>Work</h2>

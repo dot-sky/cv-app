@@ -42,3 +42,34 @@
   padding: var(--space-1x);
   border-bottom: 4px solid var(--primary-300);
 }
+
+/* Entry */
+.entry-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 6fr;
+  gap: var(--space-4x);
+  padding: var(--space-2x) 0px;
+}
+
+.entry-date,
+.entry-title {
+  margin-bottom: var(--space-1x);
+  margin-top: 0;
+
+  display: flex;
+  align-items: end;
+  min-height: var(--space-4x);
+}
+
+.entry-wrapper p {
+  margin: 0;
+}
+
+.entry-highlight {
+  font-weight: 600;
+  color: var(--text-light);
+}
+.entry-date {
+  font-family: "Poppins";
+  font-size: 1.25rem;
+}

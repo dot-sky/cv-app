@@ -19,7 +19,7 @@ textarea {
 
 textarea {
   resize: vertical;
-  min-height: 1lh;
+  min-height: min-content;
 }
 
 .field input:user-invalid,

@@ -1,0 +1,44 @@
+.cv-wrapper {
+  background-color: white;
+  padding: var(--space-4x);
+  border-radius: var(--space-1x);
+}
+
+.cv-wrapper > h1 {
+  text-align: center;
+  margin: var(--space-1x) 0;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-2x);
+  row-gap: var(--space-1x);
+  flex-wrap: wrap;
+}
+
+.contact-wrapper {
+  padding: var(--space-1x);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-1x);
+}
+
+.contact-icon {
+  height: var(--space-3x);
+}
+
+.contact-title {
+  font-weight: 600;
+  margin-bottom: var(--space-hx);
+}
+
+.contact-content {
+  color: var(--text-light);
+}
+
+.contact-wrapper .contact-icon {
+  padding: var(--space-1x);
+  border-bottom: 4px solid var(--primary-300);
+}

@@ -2,11 +2,11 @@
 
 BuildMyCV is a simple web app that helps users create CVs easily. Just fill in your details in the form, and the app automatically generates a CV for you.
 
-This project is built using **React** + **Vite** and deployed on **Cloudflare**.
+This project is built using **React** + **Vite** and deployed on **Vercel**.
 
 ## 🚀 Live Demo
 
-Check out the live app here: [BuildMyCV Live](#)
+Check out the live app here: [BuildMyCV Live](https://builld-my-cv.vercel.app/)
 
 ## 🛠 Installation
 

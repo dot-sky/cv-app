@@ -160,3 +160,8 @@ small {
   background-color: var(--primary-450);
   border: 1px solid var(--primary-450);
 }
+
+/*  */
+.text-light {
+  color: var(--text-light);
+}

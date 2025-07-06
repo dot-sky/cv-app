@@ -56,7 +56,10 @@ function CV({ person, handleEdit, educationItems, workItems }) {
             <div className="entry-wrapper" key={item.id}>
               <div className="entry-highlight">
                 <div className="entry-date">
-                  {formatDate(item.fromDate)} to {formatDate(item.untilDate)}
+                  {formatDate(item.fromDate)} to{" "}
+                  {item.untilDate !== ""
+                    ? formatDate(item.untilDate)
+                    : "Present"}
                 </div>
                 <div className="entry-place">{item.company}</div>
               </div>

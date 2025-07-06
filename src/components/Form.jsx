@@ -216,7 +216,14 @@ function buildWorkSection(workItems, setWorkItems) {
                 required={true}
               />
               <Field
-                name="Until"
+                name={
+                  <>
+                    Until{" "}
+                    <span className="text-light">
+                      (leave blank if still working here)
+                    </span>
+                  </>
+                }
                 id={getFieldId("untilDate", item.id)}
                 onChangeHandler={(event) =>
                   updateWorkItemField(event, item.id, "untilDate")
